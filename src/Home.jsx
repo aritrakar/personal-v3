@@ -300,7 +300,6 @@ export default function Home() {
           <button
             id="projects"
             className="border px-4 py-2 mx-3 rounded-lg text-sm font-space-mono uppercase hover:bg-white hover:text-gray-800 duration-200 inline-block"
-            // onClick={() => {console.log("workClicked: ", workClicked); showStars(camera, scene);}}
             onClick={() => {
               document.getElementById("projectContent").scrollIntoView({behavior: 'smooth', block: 'start'})
             }}

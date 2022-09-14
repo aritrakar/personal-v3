@@ -18,9 +18,9 @@ code {
 
 a,
 a:active {
-  text-decoration: none;
   color: whitesmoke;
   margin: 1rem;
+  /*text-decoration: none;
   margin-left: 3rem;
-  margin-right: 3rem;
+  margin-right: 3rem;*/
 }

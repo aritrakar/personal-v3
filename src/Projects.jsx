@@ -3,12 +3,13 @@ import ProjectBox from "./ProjectBox";
 
 export default function Projects() {
     return (
-        <div id="projectContent" className="top-[210vh] w-[100vw] h-auto px-6 pb-8 bg-gradient-to-b from-blue-500 to-blue-900 absolute white z-10">
+        // <div id="projectContent" className="top-[210vh] w-[100vw] h-auto px-6 pb-8 bg-gradient-to-b from-blue-500 to-blue-900 absolute white z-10">
+        <div id="projectContent" className="w-[100vw] h-auto py-2 bg-gradient-to-b from-blue-500 to-blue-900 white z-10">
             <h1 className="text-gray-100 text-4xl m-5">Featured Projects</h1>
             <div className="flex flex-wrap justify-center">
                 <ProjectBox 
                     title="Chess"
-                    text="A chess emulator built for the final project of CS246 (Object-Oriented Programming) at the University of Waterloo."
+                    text="A chess emulator built for the final project of CS246 (Object-Oriented Programming) at the University of Waterloo. (Contact me for code.)"
                     image="knight.png"
                     footer="C++, X11 libraries"
                     demo=""
@@ -16,7 +17,7 @@ export default function Projects() {
                 />
                 <ProjectBox
                     title="Pathfinding Visualizer"
-                    text="A simple tool for visualizing common pathfinding algorithms."
+                    text="A simple tool for visualizing common pathfinding algorithms, featuring Dijkstra's, A* search, DFS, and BFS algorithms."
                     image="path.gif"
                     footer="React.js, JavaScript, HTML5, CSS3"
                     demo="https://aritrakar.github.io/pathfinding_visualizer/"

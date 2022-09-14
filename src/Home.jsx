@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import * as THREE from "three";
 import gsap from "gsap";
-import "./Home.css"
+import ScrollToPlugin from "gsap/ScrollToPlugin";
 import Projects from "./Projects"
 import Work from "./Work";
 import Skills from "./Skills";
@@ -275,7 +275,7 @@ export default function Home() {
 
 
   return (
-    <div id="content" className="">
+    <div id="content" className="absolute z-1 flex flex-col justify-center w-[100%] h-[100%]">
       <div id="text" className="text-gray-100 text-center">
         <h1 className="text-6xl font-space-mono uppercase tracking-wide m-auto">
           Aritra Kar
@@ -301,6 +301,7 @@ export default function Home() {
             id="projects"
             className="border px-4 py-2 mx-3 rounded-lg text-sm font-space-mono uppercase hover:bg-white hover:text-gray-800 duration-200 inline-block"
             onClick={() => {
+              // gsap.to(window, {duration: 2, scrollTo: "#projectContent"})
               document.getElementById("projectContent").scrollIntoView({behavior: 'smooth', block: 'start'})
             }}
           >
@@ -317,7 +318,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div id="media-buttons" className="flex mt-[-2rem]">
+      <div id="media-buttons" className="flex mt-[-2rem] justify-center">
         <a
           id="linkedin"
           href="https://www.linkedin.com/in/aritra-kar"

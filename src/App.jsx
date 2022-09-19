@@ -6,7 +6,8 @@ import Work from "./Work";
 import Skills from "./Skills";
 import { useRef } from 'react';
 import Footer from './Footer';
-
+import "./App.css"
+import { TimelineLite } from 'gsap/gsap-core';
 
 let starGeometry = undefined;
 let stars = undefined;
@@ -76,10 +77,32 @@ function getStars() {
   return new THREE.Points(starGeometry, starMaterial);
 }
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function showStars(camera, scene) {
   // Set new camera position and rotation
   gsap.to(camera.position, { z: 2, y: -3, duration: 1.75 });
   gsap.to(camera.rotation, { x: 1.75, duration: 1.5 });
+
+  const duration = 0.15;
+  gsap.timeline({repeat: 2, repeatDelay: 0})
+      .to("#bannerContent", {x: 1, y: 1, rotate: 0, duration: duration})
+      .to("#bannerContent", {x: -1, y: -2, rotate: getRandomInt(-2, 0), duration: duration})
+      .to("#bannerContent", {x: -3, y: 0, rotate: getRandomInt(0, 2), duration: duration})
+      .to("#bannerContent", {x: 3, y: 2, rotate: getRandomInt(-1, 1), duration: duration})
+      .to("#bannerContent", {x: 1, y: -1, rotate: getRandomInt(0, 1), duration: duration})
+      .to("#bannerContent", {x: -1, y: 2, rotate: getRandomInt(-2, 0), duration: duration})
+      .to("#bannerContent", {x: -3, y: 1, rotate: getRandomInt(-1, 1), duration: duration})
+      .to("#bannerContent", {x: 3, y: 1, rotate: getRandomInt(-2, 0), duration: duration})
+      .to("#bannerContent", {x: -1, y: -1, rotate: getRandomInt(0, 2), duration: duration})
+      .to("#bannerContent", {x: 1, y: 2, rotate: getRandomInt(-1, 1), duration: duration})
+      .to("#bannerContent", {x: 1, y: -2, rotate: getRandomInt(-2, 0), duration: duration})
+      .to("#bannerContent", {x: 0, y: 0, rotate: 0, duration: duration});
+
   // gsap.to(document.getElementById("text"), {
   //   opacity: 0,
   //   display: "none",
@@ -101,14 +124,9 @@ function showStars(camera, scene) {
 // For raycaster
 const mouse = { x: undefined, y: undefined };
 window.addEventListener("mousemove", (event) => {
-  if (scrollY <= (innerHeight - event.clientY)) {
     // Normalize mouse coordinates
     mouse.x = (event.clientX / innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / innerHeight) * 2 + 1;
-  } else {
-    mouse.x = 0;
-    mouse.y = 0;
-  }
+    mouse.y = -((event.clientY + scrollY) / innerHeight) * 2 + 1;
 });
 
 // For torus animation
@@ -118,8 +136,6 @@ window.addEventListener("mousemove", (event) => {
   cursor.y = event.clientY / window.innerHeight - 0.5;
 })
 
-
-// let camera = undefined, raycaster = undefined, scene = undefined;
 
 // Hook
 function useWindowSize() {
@@ -354,98 +370,100 @@ function App() {
       <div id="content" className="z-10 m-auto w-[100%] flex flex-col items-center">
         <div id="banner" className="absolute z-20 top-[30%]">
           <canvas id="canvas1" className='top-0 left-0 z-0 absolute' width={size.width ?? window.innerWidth} height={size.height ?? window.innerHeight}></canvas>
-          <div id="text" className="text-gray-100 text-center">
-            <h1 className="text-6xl font-space-mono uppercase tracking-wide m-auto">
-              Aritra Kar
-            </h1>
-            <br />
-            <h3 className="text-xl font-mono">
-              Computer Science | University of Waterloo
-            </h3>
-            <br />
-            <div className='my-2'>
-              <button
-                id="work"
-                className="border px-4 py-2 mx-3 rounded-lg text-sm font-space-mono uppercase hover:bg-white hover:text-gray-800 duration-200 inline-block"
-                onClick={() => {
-                  toElement(workRef);
-                  // document.querySelector("#work").scrollIntoView({behavior: 'smooth'})
-                }}
-              >
-                Work
-              </button>
-              
-              <button
-                id="projects"
-                className="border px-4 py-2 mx-3 rounded-lg text-sm font-space-mono uppercase hover:bg-white hover:text-gray-800 duration-200 inline-block"
-                onClick={() => {
-                  toElement(projectRef);
-                  // document.getElementById("projectContent").scrollIntoView({behavior: 'smooth', block: 'start'})
-                }}
-              >
-                Projects
-              </button>
+          <div id="bannerContent">
+            <div id="text" className="text-gray-100 text-center">
+              <h1 className="text-6xl font-space-mono uppercase tracking-wide m-auto">
+                Aritra Kar
+              </h1>
+              <br />
+              <h3 className="text-xl font-mono">
+                Computer Science | University of Waterloo
+              </h3>
+              <br />
+              <div className='my-2'>
+                <button
+                  id="work"
+                  className="border px-4 py-2 mx-3 rounded-lg text-sm font-space-mono uppercase hover:bg-white hover:text-gray-800 duration-200 inline-block"
+                  onClick={() => {
+                    toElement(workRef);
+                    // document.querySelector("#work").scrollIntoView({behavior: 'smooth'})
+                  }}
+                >
+                  Work
+                </button>
+                
+                <button
+                  id="projects"
+                  className="border px-4 py-2 mx-3 rounded-lg text-sm font-space-mono uppercase hover:bg-white hover:text-gray-800 duration-200 inline-block"
+                  onClick={() => {
+                    toElement(projectRef);
+                    // document.getElementById("projectContent").scrollIntoView({behavior: 'smooth', block: 'start'})
+                  }}
+                >
+                  Projects
+                </button>
 
-              
+                
 
-              <a href="https://drive.google.com/file/d/1NeG6aCahaDHB8k4PxtL3J9LChNhYKjO7/view" target="_blank" type="noopener noreferrer" className="border px-4 py-2 mx-3 rounded-lg text-sm font-space-mono uppercase hover:bg-white hover:text-gray-800 duration-200 inline-block">Resume</a>
+                <a href="https://drive.google.com/file/d/1NeG6aCahaDHB8k4PxtL3J9LChNhYKjO7/view" target="_blank" type="noopener noreferrer" className="border px-4 py-2 mx-3 rounded-lg text-sm font-space-mono uppercase hover:bg-white hover:text-gray-800 duration-200 inline-block">Resume</a>
+              </div>
             </div>
-          </div>
 
-          <div id="media-buttons" className="flex items-center mt-[1rem] justify-between">
-            <a
-              id="linkedin"
-              href="https://www.linkedin.com/in/aritra-kar"
-              target="_blank"
-              className="mx-[4rem] hover:scale-[1.1] hover:duration-75 hover:hue-rotate-180"
-            >
-              <img src="./linkedin-24.png" alt="LinkedIn" />
-            </a>
-            <a
-              id="github"
-              href="https://www.github.com/aritrakar"
-              target="_blank"
-              type="noopener noreferrer"
-              className="mx-[4rem] hover:scale-[1.1]"
-            >
-              <img src="./github-24.png" alt="Github" />
-            </a>
-            <a
-              id="mail"
-              href="https://mail.google.com/mail/?view=cm%26fs=1%26to=a8kar@uwaterloo.ca"
-              target="_blank"
-              type="noopener noreferrer"
-              className="mx-[4rem] hover:scale-[1.1]"
-            >
-              @
-            </a>
-            <a
-              id="facebook"
-              href="https://www.facebook.com/profile.php?id=100014012589848"
-              target="_blank"
-              type="noopener noreferrer"
-              className="mx-[4rem] hover:scale-[1.1]"
-            >
-              <img src="./facebook-24.png" alt="Facebook" />
-            </a>
-            <a
-              id="instagram"
-              href="https://www.instagram.com/aritrakar28/"
-              target="_blank"
-              type="noopener noreferrer"
-              className="mx-[4rem] hover:scale-[1.1]"
-            >
-              <img src="./instagram-24.png" alt="Instagram" />
-            </a>
-          </div>
+            <div id="media-buttons" className="flex items-center mt-[1rem] justify-between">
+              <a
+                id="linkedin"
+                href="https://www.linkedin.com/in/aritra-kar"
+                target="_blank"
+                className="mx-[4rem] hover:scale-[1.1] hover:duration-75 hover:hue-rotate-180"
+              >
+                <img src="./linkedin-24.png" alt="LinkedIn" />
+              </a>
+              <a
+                id="github"
+                href="https://www.github.com/aritrakar"
+                target="_blank"
+                type="noopener noreferrer"
+                className="mx-[4rem] hover:scale-[1.1]"
+              >
+                <img src="./github-24.png" alt="Github" />
+              </a>
+              <a
+                id="mail"
+                href="https://mail.google.com/mail/?view=cm%26fs=1%26to=a8kar@uwaterloo.ca"
+                target="_blank"
+                type="noopener noreferrer"
+                className="mx-[4rem] hover:scale-[1.1]"
+              >
+                @
+              </a>
+              <a
+                id="facebook"
+                href="https://www.facebook.com/profile.php?id=100014012589848"
+                target="_blank"
+                type="noopener noreferrer"
+                className="mx-[4rem] hover:scale-[1.1]"
+              >
+                <img src="./facebook-24.png" alt="Facebook" />
+              </a>
+              <a
+                id="instagram"
+                href="https://www.instagram.com/aritrakar28/"
+                target="_blank"
+                type="noopener noreferrer"
+                className="mx-[4rem] hover:scale-[1.1]"
+              >
+                <img src="./instagram-24.png" alt="Instagram" />
+              </a>
+            </div>
 
-          <button
-              className="px-4 py-2 mt-[2rem] rounded-lg text-sm font-space-mono uppercase hover:bg-white hover:text-gray-800 duration-200 inline-block"
-              onClick={() => {
-                !starsClicked ? showStars(bannerCamera, bannerScene): location.reload();}}
-            >
-                ✨
-          </button>
+            <button
+                className="px-4 py-2 mt-[2rem] rounded-lg text-sm font-space-mono uppercase hover:bg-white hover:text-gray-800 duration-200 inline-block"
+                onClick={() => {
+                  !starsClicked ? showStars(bannerCamera, bannerScene): location.reload();}}
+              >
+                  ✨
+            </button>
+          </div>
         </div>
 
         <div className="absolute top-[100%]">

@@ -190,7 +190,8 @@ function App() {
       renderer.setSize(size.width, size.height);
     else
       renderer.setSize(window.innerWidth, window.innerHeight);
-    bannerCamera.position.setZ(6.8);
+    // bannerCamera.position.setZ(6.8);
+    bannerCamera.position.setZ(6.5);
     document.body.appendChild(renderer.domElement);
 
     // Light
@@ -405,7 +406,7 @@ function App() {
 
                 
 
-                <a href="https://drive.google.com/file/d/1NeG6aCahaDHB8k4PxtL3J9LChNhYKjO7/view" target="_blank" type="noopener noreferrer" className="border px-4 py-2 mx-3 rounded-lg text-sm font-space-mono uppercase hover:bg-white hover:text-gray-800 duration-200 inline-block">Resume</a>
+                <a href="https://drive.google.com/file/d/1wcBEG2iU3kBMFXN7WkO2-7ws5qnqLa6w/view?usp=share_link" target="_blank" type="noopener noreferrer" className="border px-4 py-2 mx-3 rounded-lg text-sm font-space-mono uppercase hover:bg-white hover:text-gray-800 duration-200 inline-block">Resume</a>
               </div>
             </div>
 
@@ -432,7 +433,7 @@ function App() {
                 href="https://mail.google.com/mail/?view=cm%26fs=1%26to=a8kar@uwaterloo.ca"
                 target="_blank"
                 type="noopener noreferrer"
-                className="mx-[4rem] hover:scale-[1.1]"
+                className="text-white mx-[4rem] hover:scale-[1.1]"
               >
                 @
               </a>

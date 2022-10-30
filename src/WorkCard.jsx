@@ -2,7 +2,7 @@ import React from "react"
 
 export default function WordCard(props) {
     return (
-        <div className="flex justify-center text-left p-4">
+        <div className="flex justify-center text-left py-4 px-8">
             <div className="flex min-w-[70%] min-h-[40vh] max-w-[90%] md:flex-row rounded-lg bg-white shadow-lg">
                 <div className="p-6 flex flex-col justify-start bg-slate-200">
                     <h5 className="text-gray-900 text-xl font-medium mb-2">{props.company}</h5>

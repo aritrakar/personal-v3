@@ -11,10 +11,10 @@ export default function Work() {
                 position="Software Development Student"
                 time="May 2022 - August 2022"
                 roles={[
-                        "Designed and implemented a JSON configuration file validator in C++ from scratch and integrated it into BlackBerry IVY Intelligent Vehicle Development Platform.",
-                        "Implemented Permission Service callback feature to facilitate the interaction of clients with the camera service and aligned old code.",
-                        "Created tools with Python, AWS Lambda, and S3 to automate uploading and downloading release packages.",
-                        "Undertook voluntary documentation effort to improve code readability of IVY. Conducted extensive UX research on IVY and code reviews on code written by teammates. Participated in Agile ceremonies regularly."]}
+                        "Created tools with Python, AWS Lambda, and S3 to automate uploading and downloading release packages to and from AWS S3 and Nexus Repository.",
+                        "Designed and implemented a JSON configuration file semantic validator in C++ from scratch and integrated it into BlackBerry IVY Intelligent Vehicle Development Platform.",
+                        "Collaborated on a team of 4 to improve client interaction with the Camera service by implementing the Permission service callback feature. Created and published Bash scripts to automate building, uploading, and testing.",
+                        "Conducted extensive UX research on IVY and code reviews on code written by teammates. Led documentation effort to improve code readability, productivity, and future intern onboarding experiences."]}
                 image="blackberry.svg"
                 footer="C++, Python, Bash, Docker, AWS S3, AWS Lambda, Gitlab, Agile"/>
             <WorkCard 

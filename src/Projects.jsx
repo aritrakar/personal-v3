@@ -8,6 +8,22 @@ export default function Projects() {
             <h1 className="text-gray-100 text-4xl m-5">Featured Projects</h1>
             <div className="flex flex-wrap justify-center">
                 <ProjectBox 
+                    title="Traffic Sign Detection"
+                    text="A 94.78% accurate classifier trained on the GTSRB dataset of 50k+ images containing 43 unique traffic signs."
+                    image="traffic.png"
+                    footer="Python, Tensorflow, Keras, Scikit-learn, Matplotlib, Pandas, NumPy"
+                    demo=""
+                    github="https://github.com/aritrakar/TrafficSignDetection"
+                />
+                <ProjectBox 
+                    title="WLP4 compiler"
+                    text="Created a compiler for WLP4, a subset of C, which outputs a relocatable, executable MIPS binary file for CS241 (Foundations of Sequential Programs) at the University of Waterloo (Contact me for code.)"
+                    image="compiler.png"
+                    footer="C++"
+                    demo=""
+                    github="https://github.com/aritrakar/WLP4-compiler"
+                />
+                <ProjectBox 
                     title="Chess"
                     text="A chess emulator built for the final project of CS246 (Object-Oriented Programming) at the University of Waterloo. (Contact me for code.)"
                     image="knight.png"

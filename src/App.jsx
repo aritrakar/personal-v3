@@ -90,17 +90,28 @@ function showStars(camera, scene) {
 
   const duration = 0.15;
   gsap.timeline({repeat: 2, repeatDelay: 0})
+      // .to("#bannerContent", {x: 1, y: 1, rotate: 0, duration: duration})
+      // .to("#bannerContent", {x: -1, y: -2, rotate: getRandomInt(-2, 0), duration: duration})
+      // .to("#bannerContent", {x: -3, y: 0, rotate: getRandomInt(0, 2), duration: duration})
+      // .to("#bannerContent", {x: 3, y: 2, rotate: getRandomInt(-1, 1), duration: duration})
+      // .to("#bannerContent", {x: 1, y: -1, rotate: getRandomInt(0, 1), duration: duration})
+      // .to("#bannerContent", {x: -1, y: 2, rotate: getRandomInt(-2, 0), duration: duration})
+      // .to("#bannerContent", {x: -3, y: 1, rotate: getRandomInt(-1, 1), duration: duration})
+      // .to("#bannerContent", {x: 3, y: 1, rotate: getRandomInt(-2, 0), duration: duration})
+      // .to("#bannerContent", {x: -1, y: -1, rotate: getRandomInt(0, 2), duration: duration})
+      // .to("#bannerContent", {x: 1, y: 2, rotate: getRandomInt(-1, 1), duration: duration})
+      // .to("#bannerContent", {x: 1, y: -2, rotate: getRandomInt(-2, 0), duration: duration})
       .to("#bannerContent", {x: 1, y: 1, rotate: 0, duration: duration})
-      .to("#bannerContent", {x: -1, y: -2, rotate: getRandomInt(-2, 0), duration: duration})
-      .to("#bannerContent", {x: -3, y: 0, rotate: getRandomInt(0, 2), duration: duration})
-      .to("#bannerContent", {x: 3, y: 2, rotate: getRandomInt(-1, 1), duration: duration})
-      .to("#bannerContent", {x: 1, y: -1, rotate: getRandomInt(0, 1), duration: duration})
-      .to("#bannerContent", {x: -1, y: 2, rotate: getRandomInt(-2, 0), duration: duration})
-      .to("#bannerContent", {x: -3, y: 1, rotate: getRandomInt(-1, 1), duration: duration})
-      .to("#bannerContent", {x: 3, y: 1, rotate: getRandomInt(-2, 0), duration: duration})
-      .to("#bannerContent", {x: -1, y: -1, rotate: getRandomInt(0, 2), duration: duration})
-      .to("#bannerContent", {x: 1, y: 2, rotate: getRandomInt(-1, 1), duration: duration})
-      .to("#bannerContent", {x: 1, y: -2, rotate: getRandomInt(-2, 0), duration: duration})
+      .to("#bannerContent", {x: getRandomInt(-5,5), y: getRandomInt(-5,5), rotate: getRandomInt(-2, 0), duration: duration})
+      .to("#bannerContent", {x:  getRandomInt(-5,5), y: getRandomInt(-5,5), rotate: getRandomInt(0, 2), duration: duration})
+      .to("#bannerContent", {x: getRandomInt(-5,5), y: getRandomInt(-5,5), rotate: getRandomInt(-1, 1), duration: duration})
+      .to("#bannerContent", {x: getRandomInt(-5,5), y:  getRandomInt(-5,5), rotate: getRandomInt(0, 1), duration: duration})
+      .to("#bannerContent", {x:  getRandomInt(-5,5), y: getRandomInt(-5,5), rotate: getRandomInt(-2, 0), duration: duration})
+      .to("#bannerContent", {x:  getRandomInt(-5,5), y: getRandomInt(-5,5), rotate: getRandomInt(-1, 1), duration: duration})
+      .to("#bannerContent", {x: getRandomInt(-5,5), y: getRandomInt(-5,5), rotate: getRandomInt(-2, 0), duration: duration})
+      .to("#bannerContent", {x:  getRandomInt(-5,5), y: getRandomInt(-5,5), rotate: getRandomInt(0, 2), duration: duration})
+      .to("#bannerContent", {x: getRandomInt(-5,5), y: getRandomInt(-5,5), rotate: getRandomInt(-1, 1), duration: duration})
+      .to("#bannerContent", {x: getRandomInt(-5,5), y:  getRandomInt(-5,5), rotate: getRandomInt(-2, 0), duration: duration})
       .to("#bannerContent", {x: 0, y: 0, rotate: 0, duration: duration});
 
   // gsap.to(document.getElementById("text"), {
@@ -361,6 +372,8 @@ function App() {
      behavior: "smooth"
    })
  }
+
+ const [isHovering, setIsHovering] = useState(false);
 
   const workRef = useRef(null);
   const projectRef = useRef(null);

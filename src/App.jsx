@@ -7,13 +7,26 @@ import Skills from "./Skills";
 import { useRef } from 'react';
 import Footer from './Footer';
 import "./App.css"
-import { TimelineLite } from 'gsap/gsap-core';
+import WorkMain from './WorkMain';
+import Certifications from './Certifications';
+import Education from './Education';
 
 let starGeometry = undefined;
 let stars = undefined;
 let frame = 0,
   velocity = 1;
 let starsClicked = false;
+
+function rgbToPercentage({r, g, b}) {
+  return {
+    r: r/255,
+    g: g/255,
+    b: b/255
+  }
+}
+
+const INITIAL_COLORS = {r: 35, g: 181, b: 225}
+const initialColorPercentages = rgbToPercentage({...INITIAL_COLORS});
 
 function jaggedPlane(planeMesh) {
   let planeVertices = planeMesh.geometry.attributes.position.array;
@@ -38,7 +51,7 @@ function jaggedPlane(planeMesh) {
 
   const colors = [];
   for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
-    colors.push(0, 0.65, 0.8); // 0, 0.19, 0.4
+    colors.push(initialColorPercentages.r, initialColorPercentages.g, initialColorPercentages.b);
   }
 
   planeMesh.geometry.setAttribute(
@@ -90,17 +103,6 @@ function showStars(camera, scene) {
 
   const duration = 0.15;
   gsap.timeline({repeat: 2, repeatDelay: 0})
-      // .to("#bannerContent", {x: 1, y: 1, rotate: 0, duration: duration})
-      // .to("#bannerContent", {x: -1, y: -2, rotate: getRandomInt(-2, 0), duration: duration})
-      // .to("#bannerContent", {x: -3, y: 0, rotate: getRandomInt(0, 2), duration: duration})
-      // .to("#bannerContent", {x: 3, y: 2, rotate: getRandomInt(-1, 1), duration: duration})
-      // .to("#bannerContent", {x: 1, y: -1, rotate: getRandomInt(0, 1), duration: duration})
-      // .to("#bannerContent", {x: -1, y: 2, rotate: getRandomInt(-2, 0), duration: duration})
-      // .to("#bannerContent", {x: -3, y: 1, rotate: getRandomInt(-1, 1), duration: duration})
-      // .to("#bannerContent", {x: 3, y: 1, rotate: getRandomInt(-2, 0), duration: duration})
-      // .to("#bannerContent", {x: -1, y: -1, rotate: getRandomInt(0, 2), duration: duration})
-      // .to("#bannerContent", {x: 1, y: 2, rotate: getRandomInt(-1, 1), duration: duration})
-      // .to("#bannerContent", {x: 1, y: -2, rotate: getRandomInt(-2, 0), duration: duration})
       .to("#bannerContent", {x: 1, y: 1, rotate: 0, duration: duration})
       .to("#bannerContent", {x: getRandomInt(-5,5), y: getRandomInt(-5,5), rotate: getRandomInt(-2, 0), duration: duration})
       .to("#bannerContent", {x:  getRandomInt(-5,5), y: getRandomInt(-5,5), rotate: getRandomInt(0, 2), duration: duration})
@@ -113,18 +115,6 @@ function showStars(camera, scene) {
       .to("#bannerContent", {x: getRandomInt(-5,5), y: getRandomInt(-5,5), rotate: getRandomInt(-1, 1), duration: duration})
       .to("#bannerContent", {x: getRandomInt(-5,5), y:  getRandomInt(-5,5), rotate: getRandomInt(-2, 0), duration: duration})
       .to("#bannerContent", {x: 0, y: 0, rotate: 0, duration: duration});
-
-  // gsap.to(document.getElementById("text"), {
-  //   opacity: 0,
-  //   display: "none",
-  //   duration: 1.75,
-  // });
-
-  // gsap.to(document.getElementById("media-buttons"), {
-  //   position: "fixed",
-  //   bottom: "2rem",
-  //   duration: 2,
-  // });
 
   starsClicked = true;
   // Add stars
@@ -151,7 +141,7 @@ window.addEventListener("mousemove", (event) => {
 // Hook
 function useWindowSize() {
   // Initialize state with undefined width/height so server and client renders match
-  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+  // https://joshwcomeau.com/react/the-perils-of-rehydration/
   const [windowSize, setWindowSize] = useState({
     width: undefined,
     height: undefined,
@@ -191,8 +181,6 @@ function App() {
     );
 
     const myCanvas = document.getElementById("canvas1");
-    // console.log("myCanvas: ", myCanvas)
-    // console.log(size.width, size.height)
     const renderer = new THREE.WebGLRenderer({canvas: myCanvas});
 
     renderer.setPixelRatio(window.devicePixelRatio);
@@ -280,13 +268,11 @@ function App() {
     
           color.needsUpdate = true;
     
-          // const initialColor = { r: 0, g: 0.19, b: 0.4 };
-          const initialColor = { r: 0, g: 0.65, b: 0.8 };
-          const hoverColor = { r: 0.4, g: 0.8, b: 0.95 };
+          const hoverColor =  rgbToPercentage({r:30, g:215, b:248});
           gsap.to(hoverColor, {
-            r: initialColor.r,
-            g: initialColor.g,
-            b: initialColor.b,
+            r: initialColorPercentages.r,
+            g: initialColorPercentages.g,
+            b: initialColorPercentages.b,
             onUpdate: () => {
               // vertex 1
               color.setX(intersects[0].face.a, hoverColor.r);
@@ -308,7 +294,7 @@ function App() {
       }
     }
 
-    animate();
+    // animate();
   }, [size.width, size.height]);
 
   // useEffect(() => {
@@ -391,7 +377,7 @@ function App() {
               </h1>
               <br />
               <h3 className="text-xl font-mono">
-                Computer Science | University of Waterloo
+                CS + AI + Statistics | University of Waterloo
               </h3>
               <br />
               <div className='my-2'>
@@ -423,7 +409,7 @@ function App() {
               </div>
             </div>
 
-            <div id="media-buttons" className="flex items-center mt-[1rem] justify-between">
+            <div id="media-buttons" className="flex items-center mt-[2rem] justify-between">
               <a
                 id="linkedin"
                 href="https://www.linkedin.com/in/aritra-kar"
@@ -481,13 +467,19 @@ function App() {
         </div>
 
         <div className="absolute top-[100%]">
-          <div ref={workRef}>
-            <Work />
+          <div ref={workRef} className="flex justify-center">
+            {/* <Work /> */}
+            <WorkMain />
+            <div className="w-[40vw]">
+              <Skills />
+              <Education />
+            </div>
           </div>
           <div ref={projectRef}>
             <Projects />
           </div>
-          <Skills />
+          {/* <Skills /> */}
+          <Certifications />
           <Footer />
         </div>
       </div>

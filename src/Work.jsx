@@ -4,7 +4,7 @@ import WorkCard from "./WorkCard"
 export default function Work() {
     return (
         // <div id="workContent" className="top-[100vh] w-[100vw] h-[110vh] px-6 pb-8 bg-gradient-to-b from-cyan-500 to-blue-500 absolute"> mt-[100vh]
-        <div id="workContent" className="py-2 bg-gradient-to-b from-cyan-500 to-blue-500"> 
+        <div id="workContent" className="py-8">
             <h1 className="text-gray-100 text-4xl m-5">Work Experience</h1>
             <WorkCard 
                 company="BlackBerry Limited"

@@ -2,7 +2,7 @@ import React from "react"
 
 export default function Footer() {
     return (
-        <footer className="z-[200] w-[100vw] pb-2 flex justify-center bg-black">
+        <footer className="z-[200] w-[100vw] pb-2 flex justify-center">
             <div className="text-white">
                 <small>&copy; Copyright {(new Date()).getFullYear()}, Aritra Kar</small>
             </div>

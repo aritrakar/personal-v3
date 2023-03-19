@@ -18,9 +18,9 @@ export default function Skills() {
 
     return (
         // <div id="skills" className="top-[324vh] w-[100vw] h-auto px-6 pb-8 flex flex-col content-center items-center bg-gradient-to-b from-blue-900 to-slate-900 absolute white z-10">
-        <div id="skills" className="w-[100vw] h-auto px-6 pb-8 flex flex-col content-center items-center bg-gradient-to-b from-blue-900 to-black white z-[100]">
+        <div id="skills" className="h-auto py-2 flex flex-col content-center items-center white z-[100]">
             <h1 className="text-gray-100 text-4xl m-5">Skills</h1>
-            <div className="flex flex-wrap justify-center w-[60vw]">
+            <div className="flex flex-wrap justify-center w-[70%]">
                 {skills.map((item, key) => (
                 
                 // <div key={key} className="bg-slate-100 text-gray-800 w-auto m-2 p-2 rounded-lg hover:scale-[1.03]">
@@ -32,8 +32,8 @@ export default function Skills() {
                     onMouseEnter={() => {console.log(`enter, ${key}`); toggleValue(key, true);}}
                     onMouseLeave={() => {console.log(`leave, ${key}`); toggleValue(key, false);}}
                 >
-                    <div className="bg-slate-200 p-3 px-[0.9rem] inline-block rounded-[5rem]">
-                        <img src={skillsPictures[key]} alt={item} className="w-auto max-h-[2rem]" />
+                    <div className="bg-slate-100 p-3 px-[0.9rem] inline-block rounded-[5rem]">
+                        <img src={skillsPictures[key]} title={item} alt={item} className="w-auto max-h-[2rem]" />
                     </div>
                     {/* {
                     !isHovering[key] ?

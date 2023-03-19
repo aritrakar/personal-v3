@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function WordCard(props) {
+export default function WorkCard(props) {
     return (
         <div className="flex justify-center text-left py-4 px-8">
             <div className="flex min-w-[70%] min-h-[40vh] max-w-[90%] md:flex-row rounded-lg bg-white shadow-lg">

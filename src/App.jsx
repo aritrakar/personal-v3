@@ -7,7 +7,6 @@ import Skills from "./Skills";
 import { useRef } from 'react';
 import Footer from './Footer';
 import "./App.css"
-import { TimelineLite } from 'gsap/gsap-core';
 
 let starGeometry = undefined;
 let stars = undefined;
